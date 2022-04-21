@@ -39,7 +39,10 @@ router.post(
   }),
   (req, res) => {
     req.flash('success', 'Login successfuly')
-    res.redirect('/campgrounds')
+    //pega o ultimo caminho que foi salvo em "middleware" se n tiver volta para campgrounds
+    const caminho = req.session.returnTo || 'campgrounds'
+    delete req.session.returnTo;
+    res.redirect(caminho)
   }
 )
 

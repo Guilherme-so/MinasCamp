@@ -3,29 +3,17 @@ const router = express.Router({ mergeParams: true })
 
 const Review = require('../models/review')
 const Campground = require('../models/campground')
-
-//joi = campgroundSchema e um modo de authenticacao
-const { reviewSchema } = require('../schemas')
 const catchAsync = require('../utils/catchAsync')
-const ExpressError = require('../utils/ExpressError')
-
-const validateReview = (req, res, next) => {
-  const { error } = reviewSchema.validate(req.body)
-  if (error) {
-    console.log(error)
-    const msg = error.details.map((el) => el.message).join(',')
-    throw new ExpressError(msg, 400)
-  } else {
-    next()
-  }
-}
+const { validateReview, isLoggedIn, isReviewAuthor} = require('../middleware')
 
 router.post(
   '/',
+  isLoggedIn,
   validateReview,
   catchAsync(async (req, res) => {
     const campground = await Campground.findById(req.params.id)
-    const review = await new Review(req.body.review)
+    const review = new Review(req.body.review)
+    review.owner = req.user._id
     campground.reviews.push(review)
     await review.save()
     await campground.save()
@@ -35,7 +23,7 @@ router.post(
 )
 
 //para pagar uma review demtro de um campground
-router.delete('/:reviewId', async (req, res) => {
+router.delete('/:reviewId', isLoggedIn, isReviewAuthor,async (req, res) => {
   const { id, reviewId } = req.params
   //"reviews" children do "campground" apaga um unico "review"
   await Review.findByIdAndDelete(reviewId)
