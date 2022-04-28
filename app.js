@@ -19,7 +19,7 @@ const campgroundsRoutes = require('./routes/campgrounds')
 const reviewsRoutes = require('./routes/reviews')
 const MongoStore = require('connect-mongo')
 
-const dbUrl = process.env.DB.URL || 'mongodb://localhost:27017/minas-camp'
+const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/minas-camp'
 
 mongoose.connect(dbUrl)
 const db = mongoose.connection
@@ -106,6 +106,7 @@ app.use((err, req, res, next) => {
   res.status(status).render('error', { err })
 })
 
-app.listen(3000, () => {
-  console.log('APP RUNNING ON PORT 3000')
+const port = process.env.PORT || 3000
+app.listen(port, () => {
+  console.log(`APP RUNNING ON PORT ${port}`)
 })
