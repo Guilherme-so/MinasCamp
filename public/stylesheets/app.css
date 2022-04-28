@@ -1,0 +1,26 @@
+#cluster-map {
+  width: 100%;
+  height: 350px;
+}
+
+#map {
+  width: 100%;
+  height: 250px;
+}
+
+.camp-nav {
+  max-width: 80vw;
+}
+
+.nav-link.active {
+  color: white;
+  border-bottom-color: white;
+}
+/* 
+.imglo {
+  display: flex;
+  width: 200px;
+  height: 200px;
+  align-items: center;
+  justify-content: center;
+} */

@@ -1,27 +1,91 @@
 <% layout("layouts/boilerplate") %>
-<h1>Login</h1>
-<form action="/login" method="POST" class="validate-form" novalidate>
-  <div class="mb-3">
-    <label class="form-label" for="username">UserName</label>
-    <input
-      class="form-control"
-      type="text"
-      id="username"
-      name="username"
-      required
-    />
-    <div class="valid-feedback">looks good</div>
+<!-- 
+<div class="container d-flex justify-content-center align-items-center mt-5" >
+  <div class="row">
+    <div class="col-md-6 offset-md-3 col-xl-4 offset-xl-4">
+      <div class="card shadow">
+        <img
+          src="https://images.unsplash.com/photo-1571863533956-01c88e79957e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80"
+          alt=""
+          class="card-img-top"
+        />
+        <div class="card-body">
+          <h5 class="card-title">Entrar</h5>
+          <form action="/login" method="POST" class="validated-form" novalidate>
+            <div class="mb-3">
+              <label class="form-label" for="username">Usuario</label>
+              <input
+                class="form-control"
+                type="text"
+                id="username"
+                name="username"
+                autofocus
+                required
+              />
+              <div class="valid-feedback">Looks good!</div>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label" for="password">Senha</label>
+              <input
+                class="form-control"
+                type="password"
+                id="password"
+                name="password"
+                required
+              />
+              <div class="valid-feedback">Looks good!</div>
+            </div>
+            <div class="d-grid gap-2">
+              <button class="btn btn-secondary">Entrar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="mb-3">
-    <label class="form-label" for="password">Password</label>
-    <input
-      class="form-control"
-      type="password"
-      id="password"
-      name="password"
-      required
-    />
-    <div class="valid-feedback">looks good</div>
+</div> -->
+
+<div class="container d-flex justify-content-center align-items-center">
+  <div class="row row-col-md-6 row-offset-md-3 row-col-xl-4 row-offset-xl-4">
+    <div class="card card shadow">
+      <img
+        src="data:image/png;base64,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"
+        class="card-img-top imglo"
+        alt="..."
+      />
+      <div class="card-body" >
+        <h5 class="card-title">Entrar</h5>
+        <form action="/login" method="POST" class="validate-form" novalidate>
+          <div class="mb-3">
+            <label class="form-label" for="username">Usuario</label>
+            <input
+              class="form-control"
+              type="text"
+              id="username"
+              name="username"
+              autofocus
+              required
+            />
+            <div class="valid-feedback">Looks good!</div>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label" for="password">Senha</label>
+            <input
+              class="form-control"
+              type="password"
+              id="password"
+              name="password"
+              required
+            />
+            <div class="valid-feedback">Looks good!</div>
+          </div>
+          <div class="d-grid gap-2">
+            <button class="btn btn-info">Entrar</button>
+          </div>
+        </form>
+      </div>
+    </div>
   </div>
-  <button class="btn btn-success">Login</button>
-</form>
+</div>

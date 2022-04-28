@@ -1,5 +1,5 @@
 <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
-  <div class="container-fluid">
+  <div class="container-fluid camp-nav">
     <a class="navbar-brand" href="#">MinasCamp</a>
     <button
       class="navbar-toggler"
@@ -15,17 +15,18 @@
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
         <a class="nav-link" href="/">Home</a>
-        <a class="nav-link" href="/campgrounds">Campgrounds</a>
-        <a class="nav-link" href="/campgrounds/new">New Campground</a>
+        <a class="nav-link" href="/campgrounds">Acampamentos</a>
+        <a class="nav-link" href="/campgrounds/new">Novo Acampamento</a>
       </div>
       <div class="navbar-nav ms-auto">
         <% if (!currentUser) { %>
-        <a class="nav-link" href="/login">Login</a>
-        <a class="nav-link" href="/register">Register</a>
+        <a class="nav-link" href="/login">Entrar</a>
+        <a class="nav-link" href="/register">Criar Conta</a>
         <% }else { %>
-        <a class="nav-link" href="/logout">Log Out</a>
+        <a class="nav-link" href="/logout">Sair</a>
         <% } %>
       </div>
     </div>
   </div>
 </nav>
+
