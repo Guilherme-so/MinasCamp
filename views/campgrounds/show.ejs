@@ -47,9 +47,9 @@
       <ul class="list-group list-group-flush">
         <li class="list-group-item text-muted"><%= campground.location%></li>
         <li class="list-group-item text-muted">
-          created by: <%= campground.owner.username%>
+          Criado por: <%= campground.owner.username%>
         </li>
-        <li class="list-group-item">$<%= campground.price %>/night</li>
+        <li class="list-group-item">$<%= campground.price %>/Dia</li>
       </ul>
 
       <% if(currentUser && campground.owner.equals(currentUser._id)) { %>
@@ -57,26 +57,26 @@
         <a
           class="card-link btn btn-info"
           href="/campgrounds/<%= campground._id %>/edit "
-          >Edit</a
+          >Editar</a
         >
         <form
           class="d-inline"
           action="/campgrounds/<%= campground._id%>?_method=delete"
           method="post"
         >
-          <button class="btn btn-danger">Delete</button>
+          <button class="btn btn-danger">Apagar</button>
         </form>
       </div>
       <% } %>
 
       <div class="card-footer text-muted">
-        <a href="/campgrounds">All campground</a>
+        <a href="/campgrounds">Todos Acampamentos</a>
       </div>
     </div>
   </div>
   <div class="col-md-6">
     <% if (currentUser) { %>
-    <h2>Leave a review</h2>
+    <h2>Deixe Um Feedback </h2>
     <form
       action="/campgrounds/<%=campground._id%>/reviews"
       method="POST"
@@ -121,7 +121,7 @@
         ></textarea>
         <div class="valid-feedback">looks good</div>
       </div>
-      <button class="btn btn-success">Submit</button>
+      <button class="btn btn-success">Enviar</button>
     </form>
     <% } %> <% for (let review of campground.reviews) { %>
     <div class="card mb-3">
